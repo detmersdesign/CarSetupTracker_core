@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Car Setup Tracker</string>
+    <string name="align_set">Alignment Settings</string>
+    <string name="session">Session Manager</string>
+    <string name="dev">Development</string>
+    <string name="LF">LF</string>
+    <string name="RF">RF</string>
+    <string name="LR">LR</string>
+    <string name="RR">RR</string>
+    <string name="In">Inner</string>
+    <string name="Mid">Middle</string>
+    <string name="Out">Outer</string>
+</resources>
