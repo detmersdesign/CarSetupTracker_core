@@ -51,6 +51,7 @@ public class Session_Top extends Activity implements View.OnClickListener {
             case R.id.land_buttonLF:
                 //open alignment settings
                 Intent intent = new Intent(this, Session.class);
+                intent.putExtra("testA", 19.7);
                 startActivity(intent);
                 break;
             default:
