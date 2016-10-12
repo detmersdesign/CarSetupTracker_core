@@ -14,7 +14,7 @@
         android:text="@string/LF"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonLF"
+        android:id="@+id/land_buttonLF"
         android:layout_marginLeft="80dp"
         android:layout_marginStart="80dp"
         android:layout_alignParentLeft="true"
@@ -27,139 +27,142 @@
         android:layout_width="50dp"
         android:layout_height="23dp"
         android:layout_marginBottom="65dp"
-        android:layout_alignBottom="@id/buttonLF"
+        android:layout_alignBottom="@id/land_buttonLF"
         android:layout_marginRight="90dp"
-        android:layout_alignRight="@id/buttonLF"
-        android:id="@+id/textLFO" />
+        android:layout_alignRight="@id/land_buttonLF"
+        android:id="@+id/land_textLFO"
+        android:clickable="true"/>
 
     <TextView
         android:text="@string/Mid"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textLFM"
-        android:layout_alignBottom="@id/textLFO"
+        android:id="@+id/land_textLFM"
+        android:layout_alignBottom="@id/land_textLFO"
         android:layout_marginRight="15dp"
-        android:layout_alignRight="@id/buttonLF" />
+        android:layout_alignRight="@id/land_buttonLF"
+        android:clickable="true"/>
 
     <TextView
         android:text="@string/In"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textLFI"
-        android:layout_alignBottom="@id/textLFO"
+        android:id="@+id/land_textLFI"
+        android:layout_alignBottom="@id/land_textLFO"
         android:layout_marginLeft="90dp"
-        android:layout_alignLeft="@id/buttonLF" />
+        android:layout_alignLeft="@id/land_buttonLF"
+        android:clickable="true"/>
 
     <Button
         android:text="@string/LR"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonLR"
+        android:id="@+id/land_buttonLR"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/buttonLF"
-        android:layout_alignStart="@+id/buttonLF" />
+        android:layout_alignLeft="@+id/land_buttonLF"
+        android:layout_alignStart="@+id/land_buttonLF" />
 
     <TextView
         android:text="@string/Out"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textLRO"
+        android:id="@+id/land_textLRO"
         android:layout_marginBottom="20dp"
-        android:layout_above="@+id/buttonLR"
-        android:layout_alignLeft="@+id/textLFO"
-        android:layout_alignStart="@+id/textLFO" />
+        android:layout_above="@+id/land_buttonLR"
+        android:layout_alignLeft="@+id/land_textLFO"
+        android:layout_alignStart="@+id/land_textLFO" />
 
     <TextView
         android:text="@string/Mid"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textLRM"
-        android:layout_alignBottom="@id/textLRO"
-        android:layout_above="@+id/buttonLR"
-        android:layout_alignLeft="@id/textLFM"
-        android:layout_alignStart="@+id/textLFM" />
+        android:id="@+id/land_textLRM"
+        android:layout_alignBottom="@id/land_textLRO"
+        android:layout_above="@+id/land_buttonLR"
+        android:layout_alignLeft="@id/land_textLFM"
+        android:layout_alignStart="@+id/land_textLFM" />
 
     <TextView
         android:text="@string/In"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textLRI"
-        android:layout_alignBottom="@id/textLRO"
-        android:layout_alignLeft="@+id/textLFI"
-        android:layout_alignStart="@+id/textLFI" />
+        android:id="@+id/land_textLRI"
+        android:layout_alignBottom="@id/land_textLRO"
+        android:layout_alignLeft="@+id/land_textLFI"
+        android:layout_alignStart="@+id/land_textLFI" />
 
     <Button
         android:text="@string/RF"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonRF"
-        android:layout_alignBottom="@+id/buttonLF"
+        android:id="@+id/land_buttonRF"
+        android:layout_alignBottom="@+id/land_buttonLF"
         android:layout_marginLeft="260dp"
-        android:layout_alignLeft="@id/buttonLF"/>
+        android:layout_alignLeft="@id/land_buttonLF"/>
 
     <TextView
         android:text="@string/In"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textRFI"
-        android:layout_alignBottom="@id/textLFO"
+        android:id="@+id/land_textRFI"
+        android:layout_alignBottom="@id/land_textLFO"
         android:layout_marginRight="90dp"
-        android:layout_alignRight="@id/buttonRF" />
+        android:layout_alignRight="@id/land_buttonRF" />
 
     <TextView
         android:text="@string/Mid"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:layout_alignBottom="@id/textLFO"
-        android:layout_alignLeft="@+id/buttonRF"
-        android:layout_alignStart="@+id/buttonRF"
+        android:layout_alignBottom="@id/land_textLFO"
+        android:layout_alignLeft="@+id/land_buttonRF"
+        android:layout_alignStart="@+id/land_buttonRF"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
-        android:id="@+id/textRFM" />
+        android:id="@+id/land_textRFM" />
 
     <TextView
         android:text="@string/Out"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textRFO"
-        android:layout_alignBottom="@id/textLFO"
+        android:id="@+id/land_textRFO"
+        android:layout_alignBottom="@id/land_textLFO"
         android:layout_marginLeft="90dp"
-        android:layout_alignLeft="@id/buttonRF" />
+        android:layout_alignLeft="@id/land_buttonRF" />
 
     <Button
         android:text="@string/RR"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/buttonLR"
-        android:layout_alignLeft="@+id/buttonRF"
-        android:layout_alignStart="@+id/buttonRF"
-        android:id="@+id/buttonRR" />
+        android:layout_alignTop="@+id/land_buttonLR"
+        android:layout_alignLeft="@+id/land_buttonRF"
+        android:layout_alignStart="@+id/land_buttonRF"
+        android:id="@+id/land_buttonRR" />
 
     <TextView
         android:text="@string/In"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textRRI"
-        android:layout_alignBottom="@id/textLRO"
-        android:layout_alignLeft="@id/textRFI"
-        android:layout_alignStart="@+id/textRFI" />
+        android:id="@+id/land_textRRI"
+        android:layout_alignBottom="@id/land_textLRO"
+        android:layout_alignLeft="@id/land_textRFI"
+        android:layout_alignStart="@+id/land_textRFI" />
 
     <TextView
         android:text="@string/Mid"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textRRM"
-        android:layout_alignBottom="@id/textLRO"
-        android:layout_alignLeft="@+id/textRFM"
-        android:layout_alignStart="@+id/textRFM" />
+        android:id="@+id/land_textRRM"
+        android:layout_alignBottom="@id/land_textLRO"
+        android:layout_alignLeft="@+id/land_textRFM"
+        android:layout_alignStart="@+id/land_textRFM" />
 
     <TextView
         android:text="@string/Out"
         android:layout_width="50dp"
         android:layout_height="23dp"
-        android:id="@+id/textRRO"
-        android:layout_alignBottom="@id/textLRO"
-        android:layout_alignLeft="@+id/textRFO"
-        android:layout_alignStart="@+id/textRFO" />
+        android:id="@+id/land_textRRO"
+        android:layout_alignBottom="@id/land_textLRO"
+        android:layout_alignLeft="@+id/land_textRFO"
+        android:layout_alignStart="@+id/land_textRFO" />
 
 </RelativeLayout>
