@@ -17,7 +17,14 @@ public class Session_Top extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session__top);
 
-        //Intent intent = getIntent();
+        Intent intent = getIntent();
+        if(intent.hasExtra("testZZ")) {
+            double junkA = intent.getDoubleExtra("testZZ", 99);
+            String junkB = String.valueOf(junkA);
+
+            Toast.makeText(this, junkB, Toast.LENGTH_SHORT).show();
+        }
+
         if(getResources().getDisplayMetrics().widthPixels>getResources().getDisplayMetrics().
                 heightPixels)
         {

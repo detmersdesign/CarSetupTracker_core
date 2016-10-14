@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 public class Session extends Activity {
@@ -20,5 +21,12 @@ public class Session extends Activity {
 
             Toast.makeText(this, junkB, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void accept(View view) {
+        //pass stuff back
+        Intent intent = new Intent(this, Session_Top.class);
+        intent.putExtra("testZZ", 7000.0);
+        startActivity(intent);
     }
 }
