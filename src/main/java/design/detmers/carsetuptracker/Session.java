@@ -32,6 +32,10 @@ public class Session extends Activity {
         Intent intent = new Intent(this, Session_Top.class);
         intent.putExtra("testZZ", 7000.0);
 
+        final TextView editA =  (TextView) findViewById(R.id.corners);
+        String garbage = editA.getText().toString();
+        intent.putExtra("corner", garbage);
+
         final EditText edit1 =  (EditText) findViewById(R.id.textI);
         String Ivalue = edit1.getText().toString();
         intent.putExtra("Ivalue", Ivalue);
