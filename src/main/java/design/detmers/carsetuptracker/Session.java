@@ -20,7 +20,7 @@ public class Session extends Activity {
         if(intent.hasExtra("corner")) {
             String junkA = intent.getStringExtra("corner");
 
-            Toast.makeText(this, junkA, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, junkA, Toast.LENGTH_SHORT).show();
 
             TextView textView = (TextView) findViewById(R.id.corners);
             textView.setText(junkA + " corner");
@@ -41,6 +41,9 @@ public class Session extends Activity {
         final EditText edit3 =  (EditText) findViewById(R.id.textO);
         String Ovalue = edit3.getText().toString();
         intent.putExtra("Ovalue", Ovalue);
+        final EditText edit4 =  (EditText) findViewById(R.id.textPSI);
+        String PSI = edit4.getText().toString();
+        intent.putExtra("PSI", PSI);
         startActivity(intent);
     }
 }

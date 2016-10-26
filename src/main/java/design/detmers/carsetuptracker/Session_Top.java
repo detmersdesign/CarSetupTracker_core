@@ -20,12 +20,12 @@ public class Session_Top extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_session__top);
 
         Intent intent = getIntent();
-        if(intent.hasExtra("testZZ")) {
-            double junkA = intent.getDoubleExtra("testZZ", 99);
-            String junkB = String.valueOf(junkA);
-
-            Toast.makeText(this, junkB, Toast.LENGTH_SHORT).show();
-        }
+//        if(intent.hasExtra("testZZ")) {
+//            double junkA = intent.getDoubleExtra("testZZ", 99);
+//            String junkB = String.valueOf(junkA);
+//
+//            Toast.makeText(this, junkB, Toast.LENGTH_SHORT).show();
+//        }
 
         if(getResources().getDisplayMetrics().widthPixels>getResources().getDisplayMetrics().
                 heightPixels)
@@ -46,18 +46,18 @@ public class Session_Top extends Activity implements View.OnClickListener {
                 L_LFO.setText(junkA);
             }
         }
-        else
-        {
-            vert_LF = (Button) findViewById(R.id.vert_buttonLF);
-            vert_LR = (Button) findViewById(R.id.vert_buttonLR);
-            vert_RF = (Button) findViewById(R.id.vert_buttonRF);
-            vert_RR = (Button) findViewById(R.id.vert_buttonRR);
-            vert_LF.setOnClickListener(this);
-            vert_LR.setOnClickListener(this);
-            vert_RF.setOnClickListener(this);
-            vert_RR.setOnClickListener(this);/**/
-            Toast.makeText(this,"Screen switched to Portrait mode", Toast.LENGTH_SHORT).show();
-        }
+//        else
+//        {
+//            vert_LF = (Button) findViewById(R.id.vert_buttonLF);
+//            vert_LR = (Button) findViewById(R.id.vert_buttonLR);
+//            vert_RF = (Button) findViewById(R.id.vert_buttonRF);
+//            vert_RR = (Button) findViewById(R.id.vert_buttonRR);
+//            vert_LF.setOnClickListener(this);
+//            vert_LR.setOnClickListener(this);
+//            vert_RF.setOnClickListener(this);
+//            vert_RR.setOnClickListener(this);/**/
+//            Toast.makeText(this,"Screen switched to Portrait mode", Toast.LENGTH_SHORT).show();
+//        }
     }
     @Override
     public void onClick(View v) {
