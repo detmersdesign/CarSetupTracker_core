@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 //public class Session_Top extends Activity {
@@ -38,6 +40,11 @@ public class Session_Top extends Activity implements View.OnClickListener {
             land_RR.setOnClickListener(this);/**/
             Toast.makeText(this,"Screen switched to Landscape mode",Toast.LENGTH_SHORT).show();
 
+            if(intent.hasExtra("Ivalue")) {
+                String junkA = intent.getStringExtra("Ivalue");
+                final TextView L_LFO =  (TextView) findViewById(R.id.land_textLFO);
+                L_LFO.setText(junkA);
+            }
         }
         else
         {
@@ -54,11 +61,26 @@ public class Session_Top extends Activity implements View.OnClickListener {
     }
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(this, Session.class);
         switch (v.getId()) {
             case R.id.land_buttonLF:
                 //open alignment settings
-                Intent intent = new Intent(this, Session.class);
-                intent.putExtra("testA", 19.7);
+                intent.putExtra("corner", "LF");
+                startActivity(intent);
+                break;
+            case R.id.land_buttonLR:
+                //open alignment settings
+                intent.putExtra("corner", "LR");
+                startActivity(intent);
+                break;
+            case R.id.land_buttonRF:
+                //open alignment settings
+                intent.putExtra("corner", "RF");
+                startActivity(intent);
+                break;
+            case R.id.land_buttonRR:
+                //open alignment settings
+                intent.putExtra("corner", "RR");
                 startActivity(intent);
                 break;
             default:

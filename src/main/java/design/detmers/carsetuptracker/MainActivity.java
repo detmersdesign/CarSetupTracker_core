@@ -64,12 +64,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.session:
                 //open session test
-                Intent intent1 = new Intent(this, Session.class);
+                Intent intent1 = new Intent(this, Session_Top.class);
                 startActivity(intent1);
                 break;
             case R.id.dev_s:
                 //open dev
-                Intent intent2 = new Intent(this, Session_Top.class);
+                Intent intent2 = new Intent(this, Development.class);
                 startActivity(intent2);
                 break;
             default:
