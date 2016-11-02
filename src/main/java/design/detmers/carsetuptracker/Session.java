@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class Session extends Activity {
 
@@ -28,7 +31,23 @@ public class Session extends Activity {
     }
 
     public void accept(View view) {
-        //pass stuff back
+        ////////TESTING///////////////////
+        DBHandler db = new DBHandler(this);
+        // Clear DB
+        List<Shop> shops = db.getAllShops();
+        for (Shop shop : shops) {
+            db.deleteShop(shop);
+        }
+        // Inserting Shop/Rows
+        Log.d("Insert: ", "Inserting ..");
+        db.addShop(new Shop(1, "Dockers", "475 Brannan St #330, San Francisco, CA 94107, United States"));
+        db.addShop(new Shop(2, "Dunkin Donuts", "White Plains, NY 10601"));
+        db.addShop(new Shop(3, "Pizza Porlar", "North West Avenue, Boston , USA"));
+        db.addShop(new Shop(4, "Town Bakers", "Beverly Hills, CA 90210, USA"));
+        ////////TESTING///////////////////
+
+
+        // pass stuff back
         Intent intent = new Intent(this, Session_Top.class);
         intent.putExtra("testZZ", 7000.0);
 

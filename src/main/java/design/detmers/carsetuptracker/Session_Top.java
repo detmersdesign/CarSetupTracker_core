@@ -3,9 +3,13 @@ package design.detmers.carsetuptracker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
 //import android.widget.EditText;
 //import android.widget.Toast;
 
@@ -25,6 +29,20 @@ public class Session_Top extends Activity implements View.OnClickListener {
 //
 //            Toast.makeText(this, junkB, Toast.LENGTH_SHORT).show();
 //        }
+
+        ////////TESTING///////////////////
+        DBHandler db = new DBHandler(this);
+        // Reading all shops
+        Log.d("Reading: ", "Reading all shops..");
+        List<Shop> shops = db.getAllShops();
+
+        for (Shop shop : shops) {
+            String log = "Id: " + shop.getId() + " ,Name: " + shop.getName() + " ,Address: " + shop.getAddress();
+            // Writing shops to log
+            Log.d("Shop: : ", log);
+            Toast.makeText(this,"Shop: : " + log,Toast.LENGTH_SHORT).show();
+        }
+        ////////TESTING///////////////////
 
         if(getResources().getDisplayMetrics().widthPixels>getResources().getDisplayMetrics().
                 heightPixels)
