@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 //import android.widget.EditText;
 //import android.widget.Toast;
@@ -31,7 +33,7 @@ public class Session_Top extends Activity implements View.OnClickListener {
 //        }
 
         ////////TESTING///////////////////
-        DBHandler db = new DBHandler(this);
+        DBHandler_orig db = new DBHandler_orig(this);
         // Reading all shops
         Log.d("Reading: ", "Reading all shops..");
         List<Shop> shops = db.getAllShops();
@@ -42,6 +44,9 @@ public class Session_Top extends Activity implements View.OnClickListener {
             Log.d("Shop: : ", log);
             Toast.makeText(this,"Shop: : " + log,Toast.LENGTH_SHORT).show();
         }
+
+        DBHandler mdb = new DBHandler(this);
+        mdb.addSess();
         ////////TESTING///////////////////
 
         if(getResources().getDisplayMetrics().widthPixels>getResources().getDisplayMetrics().

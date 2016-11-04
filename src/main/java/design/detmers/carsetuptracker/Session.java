@@ -31,22 +31,6 @@ public class Session extends Activity {
     }
 
     public void accept(View view) {
-        ////////TESTING///////////////////
-        DBHandler db = new DBHandler(this);
-        // Clear DB
-        List<Shop> shops = db.getAllShops();
-        for (Shop shop : shops) {
-            db.deleteShop(shop);
-        }
-        // Inserting Shop/Rows
-        Log.d("Insert: ", "Inserting ..");
-        db.addShop(new Shop(1, "Dockers", "475 Brannan St #330, San Francisco, CA 94107, United States"));
-        db.addShop(new Shop(2, "Dunkin Donuts", "White Plains, NY 10601"));
-        db.addShop(new Shop(3, "Pizza Porlar", "North West Avenue, Boston , USA"));
-        db.addShop(new Shop(4, "Town Bakers", "Beverly Hills, CA 90210, USA"));
-        ////////TESTING///////////////////
-
-
         // pass stuff back
         Intent intent = new Intent(this, Session_Top.class);
         intent.putExtra("testZZ", 7000.0);
@@ -67,6 +51,18 @@ public class Session extends Activity {
         final EditText edit4 =  (EditText) findViewById(R.id.textPSI);
         String PSI = edit4.getText().toString();
         intent.putExtra("PSI", PSI);
+
+        ////////TESTING///////////////////
+        DBHandler_orig db = new DBHandler_orig(this);
+
+        // Inserting Shop/Rows
+        Log.d("Insert: ", "Inserting ..");
+        db.addShop(new Shop(1, Ivalue, "475 Brannan St #330, San Francisco, CA 94107, United States"));
+        db.addShop(new Shop(2, "Dunkin Donuts", "White Plains, NY 10601"));
+        db.addShop(new Shop(3, Mvalue, "North West Avenue, Boston , USA"));
+        db.addShop(new Shop(4, Ovalue, "Beverly Hills, CA 90210, USA"));
+        ////////TESTING///////////////////
+
         startActivity(intent);
     }
 }

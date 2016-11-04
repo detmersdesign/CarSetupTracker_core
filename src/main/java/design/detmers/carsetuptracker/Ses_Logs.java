@@ -12,9 +12,7 @@ public class Ses_Logs {
     private int[] LR;
     private int[] RR;
     private String note;
-    public Ses_Logs()
-    {
-    }
+
     public Ses_Logs(int id, int T_LFI, int T_LFM, int T_LFO, int T_RFI, int T_RFM, int T_RFO, int T_LRI, int T_LRM, int T_LRO, int T_RRI, int T_RRM, int T_RRO, int P_LF, int P_RF, int P_LR, int P_RR, String note)
     {
         this.id=id;

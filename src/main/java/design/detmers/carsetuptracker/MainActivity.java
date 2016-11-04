@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.List;
+
 public class MainActivity extends Activity implements View.OnClickListener {
     Button buttonOne,buttonTwo,buttonThree;
     final Context context = this;
@@ -25,6 +27,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
         buttonOne.setOnClickListener(this);
         buttonTwo.setOnClickListener(this);
         buttonThree.setOnClickListener(this);
+
+        ///////////////TESTING////////////////////////
+        DBHandler_orig db = new DBHandler_orig(this);
+        // Clear DB
+        List<Shop> shops = db.getAllShops();
+        for (Shop shop : shops) {
+            db.deleteShop(shop);
+        }
+        DBHandler mdb = new DBHandler(this);
+        // Clear DB
+//        List<Ses_Logs> sesses = mdb.getAllSess();
+//        for (Ses_Logs sess : sesses) {
+//            mdb.deleteSess(sess);
+//        }
+
     }
     @Override
     public void onClick(View v) {
