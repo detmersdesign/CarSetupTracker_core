@@ -1,6 +1,7 @@
 package design.detmers.carsetuptracker;
 
 /**
+ * Weeeeee, I'm doing weird stuff
  * Created by mdetm on 11/1/2016.
  */
 
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class DBHandler extends SQLiteOpenHelper {
     // Database Version
@@ -28,23 +30,23 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_DATE = "date";
 
     private static final String KEY_TLFO = "LFO_t";
-    private static final String KEY_TLFM = "LFO_t";
-    private static final String KEY_TLFI = "LFO_t";
+    private static final String KEY_TLFM = "LFM_t";
+    private static final String KEY_TLFI = "LFI_t";
     private static final String KEY_PLF = "LF_p";
 
-    private static final String KEY_TRFI = "LFO_t";
-    private static final String KEY_TRFM = "LFO_t";
-    private static final String KEY_TRFO = "LFO_t";
+    private static final String KEY_TRFI = "RFI_t";
+    private static final String KEY_TRFM = "RFM_t";
+    private static final String KEY_TRFO = "RFO_t";
     private static final String KEY_PRF = "RF_p";
 
     private static final String KEY_TLRO = "LRO_t";
-    private static final String KEY_TLRM = "LRO_t";
-    private static final String KEY_TLRI = "LRO_t";
+    private static final String KEY_TLRM = "LRM_t";
+    private static final String KEY_TLRI = "LRI_t";
     private static final String KEY_PLR = "LR_p";
 
-    private static final String KEY_TRRI = "LRO_t";
-    private static final String KEY_TRRM = "LRO_t";
-    private static final String KEY_TRRO = "LRO_t";
+    private static final String KEY_TRRI = "RRI_t";
+    private static final String KEY_TRRM = "RRM_t";
+    private static final String KEY_TRRO = "RRO_t";
     private static final String KEY_PRR = "RR_p";
 
     private static final String KEY_NOTES = "notes";
@@ -64,7 +66,7 @@ public class DBHandler extends SQLiteOpenHelper {
         + KEY_TLRI + " REAL," + KEY_PLR  + " REAL,"
         + KEY_TRRI + " REAL," + KEY_TRRM + " REAL,"
         + KEY_TRRO + " REAL," + KEY_PRR  + " REAL,"
-        + KEY_NOTES + " TEXT," + ")";
+        + KEY_NOTES + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
     @Override
@@ -79,7 +81,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
         String formattedDate = df.format(c.getTime());
         ContentValues values = new ContentValues();
         values.put(KEY_DATE, formattedDate);
@@ -161,7 +163,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public Ses_Logs getSess(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_SESS, new String[]{KEY_ID,
+        Cursor cursor = db.query(TABLE_SESS, new String[]{KEY_ID, KEY_DATE,
                 KEY_TLFI, KEY_TLFM, KEY_TLFO, KEY_PLF,
                 KEY_TRFI, KEY_TRFM, KEY_TRFO, KEY_PRF,
                 KEY_TLRI, KEY_TLRM, KEY_TLRO, KEY_PLR,
@@ -171,7 +173,7 @@ public class DBHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         Ses_Logs contact = new Ses_Logs(Integer.parseInt(cursor.getString(0)),
-                Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)),
+                cursor.getString(1), Integer.parseInt(cursor.getString(2)),
                 Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)),
                 Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)),
                 Integer.parseInt(cursor.getString(7)), Integer.parseInt(cursor.getString(8)),
@@ -179,13 +181,14 @@ public class DBHandler extends SQLiteOpenHelper {
                 Integer.parseInt(cursor.getString(11)), Integer.parseInt(cursor.getString(12)),
                 Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
                 Integer.parseInt(cursor.getString(15)), Integer.parseInt(cursor.getString(16)),
-                cursor.getString(17));
+                Integer.parseInt(cursor.getString(17)),cursor.getString(18));
+        cursor.close();
         // return shop
         return contact;
     }
     // Getting All Shops
     public List<Ses_Logs> getAllSess() {
-        List<Ses_Logs> sessList = new ArrayList<Ses_Logs>();
+        List sessList = new ArrayList<Ses_Logs>();
         // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_SESS;
 
@@ -195,8 +198,8 @@ public class DBHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                Ses_Logs sess = new Ses_Logs(Integer.parseInt(cursor.getString(0)),
-                        Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)),
+                Ses_Logs item = new Ses_Logs(Integer.parseInt(cursor.getString(0)),
+                        cursor.getString(1), Integer.parseInt(cursor.getString(2)),
                         Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)),
                         Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)),
                         Integer.parseInt(cursor.getString(7)), Integer.parseInt(cursor.getString(8)),
@@ -204,11 +207,12 @@ public class DBHandler extends SQLiteOpenHelper {
                         Integer.parseInt(cursor.getString(11)), Integer.parseInt(cursor.getString(12)),
                         Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
                         Integer.parseInt(cursor.getString(15)), Integer.parseInt(cursor.getString(16)),
-                        cursor.getString(17));
+                        Integer.parseInt(cursor.getString(17)),cursor.getString(18));
                 // Adding contact to list
-                sessList.add(sess);
+                sessList.add(item);
             } while (cursor.moveToNext());
         }
+        cursor.close();
 
         // return contact list
         return sessList;

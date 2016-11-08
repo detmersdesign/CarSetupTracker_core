@@ -7,15 +7,17 @@ package design.detmers.carsetuptracker;
 
 public class Ses_Logs {
     private int id;
+    private String date;
     private int[] LF;
     private int[] RF;
     private int[] LR;
     private int[] RR;
     private String note;
 
-    public Ses_Logs(int id, int T_LFI, int T_LFM, int T_LFO, int T_RFI, int T_RFM, int T_RFO, int T_LRI, int T_LRM, int T_LRO, int T_RRI, int T_RRM, int T_RRO, int P_LF, int P_RF, int P_LR, int P_RR, String note)
+    public Ses_Logs(int id, String date, int T_LFI, int T_LFM, int T_LFO, int T_RFI, int T_RFM, int T_RFO, int T_LRI, int T_LRM, int T_LRO, int T_RRI, int T_RRM, int T_RRO, int P_LF, int P_RF, int P_LR, int P_RR, String note)
     {
         this.id=id;
+        this.date=date;
         this.LF[0]=T_LFI;
         this.LF[1]=T_LFM;
         this.LF[2]=T_LFO;
@@ -38,6 +40,9 @@ public class Ses_Logs {
     }
     public void setId(int id) {
         this.id = id;
+    }
+    public void setDate(String date) {
+        this.date = date;
     }
     public void setLF(int T_LFI,int T_LFM,int T_LFO,int P_LF) {
         this.LF[0] = T_LFI;
@@ -66,6 +71,9 @@ public class Ses_Logs {
 
     public int getId() {
         return id;
+    }
+    public String getDate() {
+        return date;
     }
     public int[] getLF() {
         return LF;

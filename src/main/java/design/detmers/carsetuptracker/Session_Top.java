@@ -46,7 +46,7 @@ public class Session_Top extends Activity implements View.OnClickListener {
         }
 
         DBHandler mdb = new DBHandler(this);
-        mdb.addSess();
+//        mdb.addSess();
         ////////TESTING///////////////////
 
         if(getResources().getDisplayMetrics().widthPixels>getResources().getDisplayMetrics().
