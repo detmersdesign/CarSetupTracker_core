@@ -8,10 +8,10 @@ package design.detmers.carsetuptracker;
 public class Ses_Logs {
     private int id;
     private String date;
-    private int[] LF;
-    private int[] RF;
-    private int[] LR;
-    private int[] RR;
+    private int[] LF = new int[4];
+    private int[] RF = new int[4];
+    private int[] LR = new int[4];
+    private int[] RR = new int[4];
     private String note;
 
     public Ses_Logs(int id, String date, int T_LFI, int T_LFM, int T_LFO, int T_RFI, int T_RFM, int T_RFO, int T_LRI, int T_LRM, int T_LRO, int T_RRI, int T_RRM, int T_RRO, int P_LF, int P_RF, int P_LR, int P_RR, String note)
@@ -37,6 +37,8 @@ public class Ses_Logs {
         this.RR[1]=T_RRM;
         this.RR[2]=T_RRO;
         this.RR[3]=P_RR;
+
+        this.note=note;
     }
     public void setId(int id) {
         this.id = id;

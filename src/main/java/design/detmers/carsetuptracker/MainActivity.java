@@ -38,9 +38,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         DBHandler mdb = new DBHandler(this);
         // Clear DB
         List<Ses_Logs> total = mdb.getAllSess();
-//        for (Ses_Logs item : total) {
-//            mdb.deleteSess(item);
-//        }
+        for (Ses_Logs item : total) {
+            mdb.deleteSess(item);
+        }
 
     }
     @Override

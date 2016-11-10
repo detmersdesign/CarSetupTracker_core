@@ -38,15 +38,24 @@ public class Session_Top extends Activity implements View.OnClickListener {
         Log.d("Reading: ", "Reading all shops..");
         List<Shop> shops = db.getAllShops();
 
-        for (Shop shop : shops) {
-            String log = "Id: " + shop.getId() + " ,Name: " + shop.getName() + " ,Address: " + shop.getAddress();
-            // Writing shops to log
-            Log.d("Shop: : ", log);
-            Toast.makeText(this,"Shop: : " + log,Toast.LENGTH_SHORT).show();
-        }
+//        for (Shop shop : shops) {
+//            String log = "Id: " + shop.getId() + " ,Name: " + shop.getName() + " ,Address: " + shop.getAddress();
+//            // Writing shops to log
+//            Log.d("Shop: : ", log);
+//            Toast.makeText(this,"Shop: : " + log,Toast.LENGTH_SHORT).show();
+//        }
 
         DBHandler mdb = new DBHandler(this);
-//        mdb.addSess();
+        mdb.addSess();
+
+        int[] thing = new int[4];
+        List<Ses_Logs> total = mdb.getAllSess();
+        for (Ses_Logs item : total) {
+            thing = item.getLF();
+            String log = "Id: " + item.getId() + " ,Name: " + thing[0];
+            // Writing shops to log
+            Toast.makeText(this,"Shop: : " + log,Toast.LENGTH_SHORT).show();
+        }
         ////////TESTING///////////////////
 
         if(getResources().getDisplayMetrics().widthPixels>getResources().getDisplayMetrics().

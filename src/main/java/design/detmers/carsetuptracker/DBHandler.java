@@ -91,11 +91,11 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    public void addLF(Ses_Logs sess) {
+    public void addLF(Ses_Logs sess, int[] temp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         // Left Front Corner Information
-        int[] temp = sess.getLF();
+        //int[] temp = sess.getLF();
         values.put(KEY_TLFI, temp[0]); // Inner Temps
         values.put(KEY_TLFM, temp[1]); // Middle Temps
         values.put(KEY_TLFO, temp[2]); // Outer Temps
@@ -172,23 +172,23 @@ public class DBHandler extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        Ses_Logs contact = new Ses_Logs(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), Integer.parseInt(cursor.getString(2)),
-                Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)),
-                Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)),
-                Integer.parseInt(cursor.getString(7)), Integer.parseInt(cursor.getString(8)),
-                Integer.parseInt(cursor.getString(9)), Integer.parseInt(cursor.getString(10)),
-                Integer.parseInt(cursor.getString(11)), Integer.parseInt(cursor.getString(12)),
-                Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
-                Integer.parseInt(cursor.getString(15)), Integer.parseInt(cursor.getString(16)),
-                Integer.parseInt(cursor.getString(17)),cursor.getString(18));
+        Ses_Logs contact = new Ses_Logs(cursor.getInt(0),
+                cursor.getString(1), cursor.getInt(2),
+                cursor.getInt(3), cursor.getInt(4),
+                cursor.getInt(5), cursor.getInt(6),
+                cursor.getInt(7), cursor.getInt(8),
+                cursor.getInt(9), cursor.getInt(10),
+                cursor.getInt(11), cursor.getInt(12),
+                cursor.getInt(13), cursor.getInt(14),
+                cursor.getInt(15), cursor.getInt(16),
+                cursor.getInt(17),cursor.getString(18));
         cursor.close();
         // return shop
         return contact;
     }
     // Getting All Shops
     public List<Ses_Logs> getAllSess() {
-        List sessList = new ArrayList<Ses_Logs>();
+        List<Ses_Logs> stuff = new ArrayList<Ses_Logs>();
         // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_SESS;
 
@@ -198,24 +198,24 @@ public class DBHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                Ses_Logs item = new Ses_Logs(Integer.parseInt(cursor.getString(0)),
-                        cursor.getString(1), Integer.parseInt(cursor.getString(2)),
-                        Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)),
-                        Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)),
-                        Integer.parseInt(cursor.getString(7)), Integer.parseInt(cursor.getString(8)),
-                        Integer.parseInt(cursor.getString(9)), Integer.parseInt(cursor.getString(10)),
-                        Integer.parseInt(cursor.getString(11)), Integer.parseInt(cursor.getString(12)),
-                        Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
-                        Integer.parseInt(cursor.getString(15)), Integer.parseInt(cursor.getString(16)),
-                        Integer.parseInt(cursor.getString(17)),cursor.getString(18));
+                Ses_Logs item = new Ses_Logs(cursor.getInt(0),
+                        cursor.getString(1), cursor.getInt(2),
+                        cursor.getInt(3), cursor.getInt(4),
+                        cursor.getInt(5), cursor.getInt(6),
+                        cursor.getInt(7), cursor.getInt(8),
+                        cursor.getInt(9), cursor.getInt(10),
+                        cursor.getInt(11), cursor.getInt(12),
+                        cursor.getInt(13), cursor.getInt(14),
+                        cursor.getInt(15), cursor.getInt(16),
+                        cursor.getInt(17), cursor.getString(18));
                 // Adding contact to list
-                sessList.add(item);
+                stuff.add(item);
             } while (cursor.moveToNext());
         }
         cursor.close();
 
         // return contact list
-        return sessList;
+        return stuff;
     }
     // Getting shops Count
     public int getSessCount() {

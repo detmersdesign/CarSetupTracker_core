@@ -53,14 +53,23 @@ public class Session extends Activity {
         intent.putExtra("PSI", PSI);
 
         ////////TESTING///////////////////
-        DBHandler_orig db = new DBHandler_orig(this);
+        DBHandler_orig db1 = new DBHandler_orig(this);
 
         // Inserting Shop/Rows
         Log.d("Insert: ", "Inserting ..");
-        db.addShop(new Shop(1, Ivalue, "475 Brannan St #330, San Francisco, CA 94107, United States"));
-        db.addShop(new Shop(2, "Dunkin Donuts", "White Plains, NY 10601"));
-        db.addShop(new Shop(3, Mvalue, "North West Avenue, Boston , USA"));
-        db.addShop(new Shop(4, Ovalue, "Beverly Hills, CA 90210, USA"));
+        db1.addShop(new Shop(1, Ivalue, "475 Brannan St #330, San Francisco, CA 94107, United States"));
+        db1.addShop(new Shop(2, "Dunkin Donuts", "White Plains, NY 10601"));
+        db1.addShop(new Shop(3, Mvalue, "North West Avenue, Boston , USA"));
+        db1.addShop(new Shop(4, Ovalue, "Beverly Hills, CA 90210, USA"));
+
+        DBHandler db = new DBHandler(this);
+        Ses_Logs s = db.getSess(1);
+        int[] stuff = new int[4];
+        stuff[0] = 10;
+        stuff[1] = 20;
+        stuff[2] = 15;
+        stuff[3] = 20;
+        db.addLF(s, stuff);
         ////////TESTING///////////////////
 
         startActivity(intent);
