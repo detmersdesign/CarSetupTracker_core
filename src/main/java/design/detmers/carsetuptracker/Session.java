@@ -41,16 +41,16 @@ public class Session extends Activity {
 
         final EditText edit1 =  (EditText) findViewById(R.id.textI);
         String Ivalue = edit1.getText().toString();
-        intent.putExtra("Ivalue", Ivalue);
+//        intent.putExtra("Ivalue", Ivalue);
         final EditText edit2 =  (EditText) findViewById(R.id.textM);
         String Mvalue = edit2.getText().toString();
-        intent.putExtra("Mvalue", Mvalue);
+//        intent.putExtra("Mvalue", Mvalue);
         final EditText edit3 =  (EditText) findViewById(R.id.textO);
         String Ovalue = edit3.getText().toString();
-        intent.putExtra("Ovalue", Ovalue);
+//        intent.putExtra("Ovalue", Ovalue);
         final EditText edit4 =  (EditText) findViewById(R.id.textPSI);
         String PSI = edit4.getText().toString();
-        intent.putExtra("PSI", PSI);
+//        intent.putExtra("PSI", PSI);
 
         ////////TESTING///////////////////
         DBHandler_orig db1 = new DBHandler_orig(this);
@@ -63,13 +63,30 @@ public class Session extends Activity {
         db1.addShop(new Shop(4, Ovalue, "Beverly Hills, CA 90210, USA"));
 
         DBHandler db = new DBHandler(this);
-        Ses_Logs s = db.getSess(1);
+        int last = db.getSessCount();
+        Ses_Logs s = db.getSess(last);
+
         int[] stuff = new int[4];
-        stuff[0] = 10;
-        stuff[1] = 20;
-        stuff[2] = 15;
-        stuff[3] = 20;
-        db.addLF(s, stuff);
+        stuff[0] = Integer.parseInt(Ivalue);
+        stuff[1] = Integer.parseInt(Mvalue);
+        stuff[2] = Integer.parseInt(Ovalue);
+        stuff[3] = Integer.parseInt(PSI);
+
+        if(intent.hasExtra("corner")){
+                String CSW = intent.getStringExtra("corner");
+                switch (CSW) {
+                    case "LF corner":
+                        db.addLF(s, stuff);
+                    case "RF corner":
+                        db.addRF(s, stuff);
+                    case "LR corner":
+                        db.addLR(s, stuff);
+                        Toast.makeText(this,"Left-Rear",Toast.LENGTH_SHORT).show();
+                    case "RR corner":
+                        db.addRR(s, stuff);
+                    default:
+                }
+        }
         ////////TESTING///////////////////
 
         startActivity(intent);

@@ -33,29 +33,23 @@ public class Session_Top extends Activity implements View.OnClickListener {
 //        }
 
         ////////TESTING///////////////////
-        DBHandler_orig db = new DBHandler_orig(this);
-        // Reading all shops
-        Log.d("Reading: ", "Reading all shops..");
-        List<Shop> shops = db.getAllShops();
+        DBHandler mdb = new DBHandler(this);
 
-//        for (Shop shop : shops) {
-//            String log = "Id: " + shop.getId() + " ,Name: " + shop.getName() + " ,Address: " + shop.getAddress();
+        //find newly created session i.e. last one
+        int last = mdb.getSessCount();
+        Ses_Logs new_ses = mdb.getSess(last);
+
+        String dt = new_ses.getDate();
+        Toast.makeText(this, "holy crap-" + dt, Toast.LENGTH_SHORT).show();
+
+//        int[] thing = new int[4];
+//        List<Ses_Logs> total = mdb.getAllSess();
+//        for (Ses_Logs item : total) {
+//            thing = item.getLF();
+//            String log = "Id: " + item.getId() + " ,Name: " + thing[0];
 //            // Writing shops to log
-//            Log.d("Shop: : ", log);
 //            Toast.makeText(this,"Shop: : " + log,Toast.LENGTH_SHORT).show();
 //        }
-
-        DBHandler mdb = new DBHandler(this);
-        mdb.addSess();
-
-        int[] thing = new int[4];
-        List<Ses_Logs> total = mdb.getAllSess();
-        for (Ses_Logs item : total) {
-            thing = item.getLF();
-            String log = "Id: " + item.getId() + " ,Name: " + thing[0];
-            // Writing shops to log
-            Toast.makeText(this,"Shop: : " + log,Toast.LENGTH_SHORT).show();
-        }
         ////////TESTING///////////////////
 
         if(getResources().getDisplayMetrics().widthPixels>getResources().getDisplayMetrics().
@@ -71,76 +65,66 @@ public class Session_Top extends Activity implements View.OnClickListener {
             land_RR.setOnClickListener(this);/**/
             //Toast.makeText(this,"Screen switched to Landscape mode",Toast.LENGTH_SHORT).show();
 
-            if(intent.hasExtra("corner")){
-                String CSW = intent.getStringExtra("corner");
-                switch (CSW) {
-                    case "LF corner":
-                        if (intent.hasExtra("Ivalue")) {
-                            String junkA = intent.getStringExtra("Ivalue");
-                            final TextView L_LFI = (TextView) findViewById(R.id.land_textLFI);
-                            L_LFI.setText(junkA);
-                        }
-                        if (intent.hasExtra("Mvalue")) {
-                            String junkA = intent.getStringExtra("Mvalue");
-                            final TextView L_LFM = (TextView) findViewById(R.id.land_textLFM);
-                            L_LFM.setText(junkA);
-                        }
-                        if (intent.hasExtra("Ovalue")) {
-                            String junkA = intent.getStringExtra("Ovalue");
-                            final TextView L_LFO = (TextView) findViewById(R.id.land_textLFO);
-                            L_LFO.setText(junkA);
-                        }
-                    case "LR corner":
-                        if (intent.hasExtra("Ivalue")) {
-                            String junkA = intent.getStringExtra("Ivalue");
-                            final TextView L_LRI = (TextView) findViewById(R.id.land_textLRI);
-                            L_LRI.setText(junkA);
-                        }
-                        if (intent.hasExtra("Mvalue")) {
-                            String junkA = intent.getStringExtra("Mvalue");
-                            final TextView L_LRM = (TextView) findViewById(R.id.land_textLRM);
-                            L_LRM.setText(junkA);
-                        }
-                        if (intent.hasExtra("Ovalue")) {
-                            String junkA = intent.getStringExtra("Ovalue");
-                            final TextView L_LRO = (TextView) findViewById(R.id.land_textLRO);
-                            L_LRO.setText(junkA);
-                        }
-                    case "RF corner":
-                        if (intent.hasExtra("Ivalue")) {
-                            String junkA = intent.getStringExtra("Ivalue");
-                            final TextView L_RFI = (TextView) findViewById(R.id.land_textRFI);
-                            L_RFI.setText(junkA);
-                        }
-                        if (intent.hasExtra("Mvalue")) {
-                            String junkA = intent.getStringExtra("Mvalue");
-                            final TextView L_RFM = (TextView) findViewById(R.id.land_textRFM);
-                            L_RFM.setText(junkA);
-                        }
-                        if (intent.hasExtra("Ovalue")) {
-                            String junkA = intent.getStringExtra("Ovalue");
-                            final TextView L_RFO = (TextView) findViewById(R.id.land_textRFO);
-                            L_RFO.setText(junkA);
-                        }
-                    case "RR corner":
-                        if (intent.hasExtra("Ivalue")) {
-                            String junkA = intent.getStringExtra("Ivalue");
-                            final TextView L_RRI = (TextView) findViewById(R.id.land_textRRI);
-                            L_RRI.setText(junkA);
-                        }
-                        if (intent.hasExtra("Mvalue")) {
-                            String junkA = intent.getStringExtra("Mvalue");
-                            final TextView L_RRM = (TextView) findViewById(R.id.land_textRRM);
-                            L_RRM.setText(junkA);
-                        }
-                        if (intent.hasExtra("Ovalue")) {
-                            String junkA = intent.getStringExtra("Ovalue");
-                            final TextView L_RRO = (TextView) findViewById(R.id.land_textRRO);
-                            L_RRO.setText(junkA);
-                        }
-                    default:
-                }
+            //Old bad method....no longer using, left as helpful reference
+//            if(intent.hasExtra("corner")){
+//                String CSW = intent.getStringExtra("corner");
+//                switch (CSW) {
+//                    case "LF corner":
+//                        if (intent.hasExtra("Ivalue")) {
+//                            String junkA = intent.getStringExtra("Ivalue");
+//                            final TextView L_LFI = (TextView) findViewById(R.id.land_textLFI);
+//                            L_LFI.setText(junkA);
+//                        }
+//                        if (intent.hasExtra("Mvalue")) {
+//                            String junkA = intent.getStringExtra("Mvalue");
+//                            final TextView L_LFM = (TextView) findViewById(R.id.land_textLFM);
+//                            L_LFM.setText(junkA);
+//                        }
+//                    default:
+//                }
+//            }
+            //get all values from database
+            int[] Cdata = new int[4];
+
+//            //set all values to screen from database
+            //Left Front
+            Cdata = new_ses.getLF();
+            final TextView L_LFI = (TextView) findViewById(R.id.land_textLFI);
+            L_LFI.setText(String.valueOf(Cdata[0]));
+            final TextView L_LFM = (TextView) findViewById(R.id.land_textLFM);
+            L_LFM.setText(String.valueOf(Cdata[1]));
+            final TextView L_LFO = (TextView) findViewById(R.id.land_textLFO);
+            L_LFO.setText(String.valueOf(Cdata[2]));
+
+            //Right Front
+//            Cdata = new_ses.getRF();
+//            final TextView L_RFI = (TextView) findViewById(R.id.land_textRFI);
+//            L_RFI.setText(String.valueOf(Cdata[0]));
+//            final TextView L_RFM = (TextView) findViewById(R.id.land_textRFM);
+//            L_RFM.setText(String.valueOf(Cdata[1]));
+//            final TextView L_RFO = (TextView) findViewById(R.id.land_textRFO);
+//            L_RFO.setText(String.valueOf(Cdata[2]));
+
+            //Left Rear
+            Cdata = new_ses.getLR();
+            for (int lst=0; lst<4; lst++){
+                Toast.makeText(this, String.valueOf(Cdata[lst]), Toast.LENGTH_SHORT).show();
             }
+            final TextView L_LRI = (TextView) findViewById(R.id.land_textLRI);
+            L_LRI.setText(String.valueOf(Cdata[0]));
+            final TextView L_LRM = (TextView) findViewById(R.id.land_textLRM);
+            L_LRM.setText(String.valueOf(Cdata[1]));
+            final TextView L_LRO = (TextView) findViewById(R.id.land_textLRO);
+            L_LRO.setText(String.valueOf(Cdata[2]));
+
+            //Right Rear
+            Cdata = new_ses.getRR();
+            final TextView L_RRI = (TextView) findViewById(R.id.land_textRRI);
+            L_RRI.setText(String.valueOf(Cdata[0]));
+            final TextView L_RRM = (TextView) findViewById(R.id.land_textRRM);
+            L_RRM.setText(String.valueOf(Cdata[1]));
+            final TextView L_RRO = (TextView) findViewById(R.id.land_textRRO);
+            L_RRO.setText(String.valueOf(Cdata[2]));
         }
 //        else
 //        {

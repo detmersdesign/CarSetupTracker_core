@@ -29,12 +29,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         buttonThree.setOnClickListener(this);
 
         ///////////////TESTING////////////////////////
-        DBHandler_orig db = new DBHandler_orig(this);
-        // Clear DB
-        List<Shop> shops = db.getAllShops();
-        for (Shop shop : shops) {
-            db.deleteShop(shop);
-        }
         DBHandler mdb = new DBHandler(this);
         // Clear DB
         List<Ses_Logs> total = mdb.getAllSess();
@@ -80,6 +74,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 alertDialog.show();
                 break;
             case R.id.session:
+                DBHandler mdb = new DBHandler(this);
+                mdb.addSess();
                 //open session test
                 Intent intent1 = new Intent(this, Session_Top.class);
                 startActivity(intent1);

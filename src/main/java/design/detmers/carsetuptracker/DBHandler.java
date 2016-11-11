@@ -106,11 +106,11 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    public void addRF(Ses_Logs sess) {
+    public void addRF(Ses_Logs sess, int[] temp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         // Right Front Corner Information
-        int[] temp = sess.getRF();
+        //int[] temp = sess.getRF();
         values.put(KEY_TRFI, temp[0]); // Inner Temps
         values.put(KEY_TRFM, temp[1]); // Middle Temps
         values.put(KEY_TRFO, temp[2]); // Outer Temps
@@ -121,11 +121,11 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    public void addLR(Ses_Logs sess) {
+    public void addLR(Ses_Logs sess, int[] temp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         // Left Rear Corner Information
-        int[] temp = sess.getLR();
+        //int[] temp = sess.getLR();
         values.put(KEY_TLRI, temp[0]); // Inner Temps
         values.put(KEY_TLRM, temp[1]); // Middle Temps
         values.put(KEY_TLRO, temp[2]); // Outer Temps
@@ -136,11 +136,11 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    public void addRR(Ses_Logs sess) {
+    public void addRR(Ses_Logs sess, int[] temp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         // Right Rear Corner Information
-        int[] temp = sess.getRR();
+        //int[] temp = sess.getRR();
         values.put(KEY_TRRI, temp[0]); // Inner Temps
         values.put(KEY_TRRM, temp[1]); // Middle Temps
         values.put(KEY_TRRO, temp[2]); // Outer Temps
@@ -222,10 +222,10 @@ public class DBHandler extends SQLiteOpenHelper {
         String countQuery = "SELECT * FROM " + TABLE_SESS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
         cursor.close();
-
         // return count
-        return cursor.getCount();
+        return cnt;
     }
     // Updating a shop
     public int updateShop(Shop shop) {
