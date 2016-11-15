@@ -97,19 +97,16 @@ public class Session_Top extends Activity implements View.OnClickListener {
             L_LFO.setText(String.valueOf(Cdata[2]));
 
             //Right Front
-//            Cdata = new_ses.getRF();
-//            final TextView L_RFI = (TextView) findViewById(R.id.land_textRFI);
-//            L_RFI.setText(String.valueOf(Cdata[0]));
-//            final TextView L_RFM = (TextView) findViewById(R.id.land_textRFM);
-//            L_RFM.setText(String.valueOf(Cdata[1]));
-//            final TextView L_RFO = (TextView) findViewById(R.id.land_textRFO);
-//            L_RFO.setText(String.valueOf(Cdata[2]));
+            Cdata = new_ses.getRF();
+            final TextView L_RFI = (TextView) findViewById(R.id.land_textRFI);
+            L_RFI.setText(String.valueOf(Cdata[0]));
+            final TextView L_RFM = (TextView) findViewById(R.id.land_textRFM);
+            L_RFM.setText(String.valueOf(Cdata[1]));
+            final TextView L_RFO = (TextView) findViewById(R.id.land_textRFO);
+            L_RFO.setText(String.valueOf(Cdata[2]));
 
             //Left Rear
             Cdata = new_ses.getLR();
-            for (int lst=0; lst<4; lst++){
-                Toast.makeText(this, String.valueOf(Cdata[lst]), Toast.LENGTH_SHORT).show();
-            }
             final TextView L_LRI = (TextView) findViewById(R.id.land_textLRI);
             L_LRI.setText(String.valueOf(Cdata[0]));
             final TextView L_LRM = (TextView) findViewById(R.id.land_textLRM);

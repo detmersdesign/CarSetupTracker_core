@@ -82,7 +82,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.dev_s:
                 //open dev
-                Intent intent2 = new Intent(this, Development.class);
+                Intent intent2 = new Intent(this, AndroidDatabaseManager.class);
                 startActivity(intent2);
                 break;
             default:

@@ -12,6 +12,7 @@ public class Ses_Logs {
     private int[] RF = new int[4];
     private int[] LR = new int[4];
     private int[] RR = new int[4];
+    private int[] item = new int[4];
     private String note;
 
     public Ses_Logs(int id, String date, int T_LFI, int T_LFM, int T_LFO, int T_RFI, int T_RFM, int T_RFO, int T_LRI, int T_LRM, int T_LRO, int T_RRI, int T_RRM, int T_RRO, int P_LF, int P_RF, int P_LR, int P_RR, String note)
@@ -78,16 +79,32 @@ public class Ses_Logs {
         return date;
     }
     public int[] getLF() {
-        return LF;
+        item[0] = this.LF[0];
+        item[1] = this.LF[1];
+        item[2] = this.LF[2];
+        item[3] = this.LF[3];
+        return item;
     }
     public int[] getRF() {
-        return RF;
+        item[0] = this.RF[0];
+        item[1] = this.RF[1];
+        item[2] = this.RF[2];
+        item[3] = this.RF[3];
+        return item;
     }
     public int[] getLR() {
-        return LR;
+        item[0] = this.LR[0];
+        item[1] = this.LR[1];
+        item[2] = this.LR[2];
+        item[3] = this.LR[3];
+        return item;
     }
     public int[] getRR() {
-        return RR;
+        item[0] = this.RR[0];
+        item[1] = this.RR[1];
+        item[2] = this.RR[2];
+        item[3] = this.RR[3];
+        return item;
     }
     public String getNote() {
         return note;
