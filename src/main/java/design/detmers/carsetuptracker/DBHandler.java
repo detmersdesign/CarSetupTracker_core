@@ -61,14 +61,10 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_SESS + "("
         + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DATE + " TEXT,"
-        + KEY_TLFO + " REAL," + KEY_TLFM + " REAL,"
-        + KEY_TLFI + " REAL," + KEY_PLF  + " REAL,"
-        + KEY_TRFI + " REAL," + KEY_TRFM + " REAL,"
-        + KEY_TRFO + " REAL," + KEY_PRF  + " REAL,"
-        + KEY_TLRO + " REAL," + KEY_TLRM + " REAL,"
-        + KEY_TLRI + " REAL," + KEY_PLR  + " REAL,"
-        + KEY_TRRI + " REAL," + KEY_TRRM + " REAL,"
-        + KEY_TRRO + " REAL," + KEY_PRR  + " REAL,"
+        + KEY_TLFI + " REAL," + KEY_TLFM + " REAL," + KEY_TLFO + " REAL," + KEY_PLF  + " REAL,"
+        + KEY_TRFI + " REAL," + KEY_TRFM + " REAL," + KEY_TRFO + " REAL," + KEY_PRF  + " REAL,"
+        + KEY_TLRI + " REAL," + KEY_TLRM + " REAL," + KEY_TLRO + " REAL," + KEY_PLR  + " REAL,"
+        + KEY_TRRI + " REAL," + KEY_TRRM + " REAL," + KEY_TRRO + " REAL," + KEY_PRR  + " REAL,"
         + KEY_NOTES + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
@@ -94,7 +90,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    public void addLF(Ses_Logs sess, int[] temp) {
+    public void addLF(Ses_Logs xyz, int[] temp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         // Left Front Corner Information
@@ -105,11 +101,11 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_PLF, temp[3]); // Pressure
         // updating row
         db.update(TABLE_SESS, values, KEY_ID + " = ?",
-        new String[]{String.valueOf(sess.getId())});
+        new String[]{String.valueOf(xyz.getId())});
         db.close(); // Closing database connection
     }
 
-    public void addRF(Ses_Logs sess, int[] temp) {
+    public void addRF(Ses_Logs xyz, int[] temp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         // Right Front Corner Information
@@ -120,11 +116,11 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_PRF, temp[3]); // Pressure
         // updating row
         db.update(TABLE_SESS, values, KEY_ID + " = ?",
-        new String[]{String.valueOf(sess.getId())});
+        new String[]{String.valueOf(xyz.getId())});
         db.close(); // Closing database connection
     }
 
-    public void addLR(Ses_Logs sess, int[] temp) {
+    public void addLR(Ses_Logs xyz, int[] temp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         // Left Rear Corner Information
@@ -132,14 +128,14 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_TLRI, temp[0]); // Inner Temps
         values.put(KEY_TLRM, temp[1]); // Middle Temps
         values.put(KEY_TLRO, temp[2]); // Outer Temps
-        values.put(KEY_PRF, temp[3]); // Pressure
+        values.put(KEY_PLR, temp[3]); // Pressure
         // updating row
         db.update(TABLE_SESS, values, KEY_ID + " = ?",
-        new String[]{String.valueOf(sess.getId())});
+        new String[]{String.valueOf(xyz.getId())});
         db.close(); // Closing database connection
     }
 
-    public void addRR(Ses_Logs sess, int[] temp) {
+    public void addRR(Ses_Logs xyz, int[] temp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         // Right Rear Corner Information
@@ -150,15 +146,15 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_PRR, temp[3]); // Pressure
         // updating row
         db.update(TABLE_SESS, values, KEY_ID + " = ?",
-        new String[]{String.valueOf(sess.getId())});
+        new String[]{String.valueOf(xyz.getId())});
         db.close(); // Closing database connection
     }
-    public void addNote(Ses_Logs sess) {
+    public void addNote(Ses_Logs xyz) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_NOTES, "test");  //Session Notes
         db.update(TABLE_SESS, values, KEY_ID + " = ?",
-        new String[]{String.valueOf(sess.getId())});
+        new String[]{String.valueOf(xyz.getId())});
         db.close(); // Closing database connection
     }
 

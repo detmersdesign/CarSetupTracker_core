@@ -8,8 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Objects;
-
 public class Session extends Activity {
     public static int parseInteger( String string, int defaultValue ) {
         try {
@@ -69,22 +67,22 @@ public class Session extends Activity {
 //        }
         if(intent.hasExtra("corner")){
                 String CSW = intent.getStringExtra("corner");
-                Toast.makeText(this,CSW, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this,CSW, Toast.LENGTH_SHORT).show();
                 if (CSW.equals("LF corner")){
                     db.addLF(s, stuff);
-                    Toast.makeText(this,"LF->", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this,"LF->", Toast.LENGTH_SHORT).show();
                 }
                 if (CSW.equals("RF corner")){
                     db.addRF(s, stuff);
-                    Toast.makeText(this, "RF->", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this, "RF->", Toast.LENGTH_SHORT).show();
                 }
                 if (CSW.equals("LR corner")){
                     db.addLR(s, stuff);
-                    Toast.makeText(this,"LR->", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this,"LR->", Toast.LENGTH_SHORT).show();
                 }
                 if (CSW.equals("RR corner")){
                     db.addRR(s, stuff);
-                    Toast.makeText(this,"RR->", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this,"RR->", Toast.LENGTH_SHORT).show();
                 }
         }
         ////////TESTING///////////////////

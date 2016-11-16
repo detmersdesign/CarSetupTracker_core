@@ -3,15 +3,15 @@ package design.detmers.carsetuptracker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
+//import java.text.SimpleDateFormat;
+//import java.util.Calendar;
+//import java.util.List;
 //import android.widget.EditText;
 //import android.widget.Toast;
 
@@ -24,7 +24,7 @@ public class Session_Top extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session__top);
 
-        Intent intent = getIntent();
+//        Intent intent = getIntent();
 //        if(intent.hasExtra("testZZ")) {
 //            double junkA = intent.getDoubleExtra("testZZ", 99);
 //            String junkB = String.valueOf(junkA);
@@ -40,7 +40,7 @@ public class Session_Top extends Activity implements View.OnClickListener {
         Ses_Logs new_ses = mdb.getSess(last);
 
         String dt = new_ses.getDate();
-        Toast.makeText(this, "holy crap-" + dt, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "holy crap-" + dt, Toast.LENGTH_SHORT).show();
 
 //        int[] thing = new int[4];
 //        List<Ses_Logs> total = mdb.getAllSess();
@@ -84,7 +84,7 @@ public class Session_Top extends Activity implements View.OnClickListener {
 //                }
 //            }
             //get all values from database
-            int[] Cdata = new int[4];
+            int[] Cdata;
 
 //            //set all values to screen from database
             //Left Front
@@ -116,6 +116,9 @@ public class Session_Top extends Activity implements View.OnClickListener {
 
             //Right Rear
             Cdata = new_ses.getRR();
+            for (int cnt=0; cnt<3; cnt++){
+                Toast.makeText(this,"RR->"+Cdata[cnt],Toast.LENGTH_SHORT).show();
+            }
             final TextView L_RRI = (TextView) findViewById(R.id.land_textRRI);
             L_RRI.setText(String.valueOf(Cdata[0]));
             final TextView L_RRM = (TextView) findViewById(R.id.land_textRRM);
