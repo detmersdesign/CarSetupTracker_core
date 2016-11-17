@@ -18,7 +18,7 @@ import android.widget.Toast;
 //public class Session_Top extends Activity {
 public class Session_Top extends Activity implements View.OnClickListener {
     Button land_LF,land_LR,land_RF,land_RR;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
